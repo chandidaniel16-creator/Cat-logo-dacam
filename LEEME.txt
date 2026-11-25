@@ -1,0 +1,22 @@
+CATÁLOGO D ACAM 3D - ARCHIVOS PARA GITHUB PAGES
+
+Incluye:
+- index.html
+- styles.css
+- script.js
+- assets/logo-dacam-3d.png (logo enviado)
+
+WhatsApp ya configurado: +54 9 11 5116-8759
+
+PARA ACTUALIZAR EL REPOSITORIO:
+1. Descomprimí este ZIP en tu celular.
+2. En GitHub abrí el repositorio Cat-logo-dacam.
+3. Add file > Upload files.
+4. Subí y reemplazá index.html, styles.css y script.js.
+5. Subí también la carpeta assets con logo-dacam-3d.png.
+6. Tocá Commit changes.
+
+PARA CARGAR PRODUCTOS:
+Editá script.js y reemplazá los productos de ejemplo dentro de const products.
+En image colocá la ruta de la foto, por ejemplo: assets/llavero-corazon.jpg.
+Subí también esa foto dentro de la carpeta assets.
