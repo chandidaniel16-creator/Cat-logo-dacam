@@ -72,6 +72,102 @@ let active = "Todos";
 
 function drawFilters() {
   const cats = ["Todos", ...new Set(products.map(p => p.category))];
+
+  filters.innerHTML = cats.map(c =>
+    `<button class="filter ${c === active ? "active" : ""}" data-c="${c}">${c}</button>`
+  ).join("");
+
+  filters.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      active = b.dataset.c;
+      drawFilters();
+      draw();
+    };
+  });
+}
+
+function draw() {
+  const q = search.value.toLowerCase();
+
+  const list = products.filter(p =>
+    (active === "Todos" || p.category === active) &&
+    (p.name + p.category + p.description).toLowerCase().includes(q)
+  );
+
+  document.getElementById("count").textContent = list.length + " productos";
+  document.getElementById("empty").hidden = list.length > 0;
+
+  grid.innerHTML = list.map(p => {
+    const index = products.indexOf(p);
+
+    return `
+      <article class="card product-card">
+        <a class="product-link" href="producto.html?id=${index}">
+          <div class="photo">
+            ${p.image
+              ? `<img src="${p.image}" alt="${p.name}">`
+              : '<span class="placeholder">DaCam 3D</span>'}
+          </div>
+          <div class="info">
+            <span class="category">${p.category}</span>
+            <h3>${p.name}</h3>
+            <p class="description">${p.description}</p>
+            <span class="price">${p.price}</span>
+            <span class="view-product">VER PRODUCTO →</span>
+          </div>
+        </a>
+        <div class="product-contact">
+          <a class="ask" href="${wa(p.name)}" target="_blank" rel="noopener">
+            CONSULTAR ↗
+          </a>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+search.addEventListener("input", draw);
+drawFilters();
+draw();
+
+    description: "Adorno navideño impreso en 3D con hermoso diseño estilo tejido.",
+    image: ""
+  },
+  {
+    name: "☃️❄️ Muñeco de Nieve Tejido ❄️",
+    category: "Decoración",
+    price: "$3000",
+    description: `¡Un detalle lleno de ternura para esta temporada! ❤️
+
+Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D, con detalles que imitan la textura del crochet.
+
+🧶 Diseño estilo tejido.
+⛄ Terminaciones y detalles decorativos.
+🎁 Ideal para decorar tu hogar o regalar.
+❤️ Un toque navideño y original para cualquier rincón.
+
+✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
+    image: ""
+  }
+];
+
+const grid = document.getElementById("grid");
+const filters = document.getElementById("filters");
+const search = document.getElementById("search");
+
+function wa(name = "") {
+  const msg = "Hola DaCam 3D! Quiero consultar por " + name;
+  return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+}
+
+document.getElementById("topWhatsapp").href = wa();
+document.getElementById("bottomWhatsapp").href = wa();
+document.getElementById("year").textContent = new Date().getFullYear();
+
+let active = "Todos";
+
+function drawFilters() {
+  const cats = ["Todos", ...new Set(products.map(p => p.category))];
   filters.innerHTML = cats.map(c =>
     `<button class="filter ${c === active ? "active" : ""}" data-c="${c}">${c}</button>`
   ).join("");
