@@ -23,7 +23,24 @@ const products = [
     price: "Consultar",
     description: "Creamos tus ideas en 3D.",
     image: "",
-    colors: ["A elección"] }
+    colors: ["A elección"],
+  {name: "Muñeco de nieve tejido",
+  category: "Decoración",
+  price: 3000,
+  description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
+
+¡Un detalle lleno de ternura para esta temporada! ❤️
+
+Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D, con detalles que imitan la textura del crochet.
+
+🧶 Diseño estilo tejido.
+⛄ Terminaciones y detalles decorativos.
+🎁 Ideal para decorar tu hogar o regalar.
+❤️ Un toque navideño y original para cualquier rincón.
+
+✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
+  image: "",
+  colors: ["Blanco", "Rojo", "Verde"] }
 ];
 
 const grid = document.getElementById("grid");
