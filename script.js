@@ -1,23 +1,18 @@
 const WHATSAPP_NUMBER = "5491151168759";
 const products = [
-  {
-    name: "Llaveros personalizados",
+  {name: "Llaveros personalizados",
     category: "Llaveros",
     price: "Consultar",
     description: "Diseños personalizados en 3D.",
     image: "",
-    colors: ["A elección"]
-  },
-  {
-    name: "Adornos decorativos",
+    colors: ["A elección"] },
+  {name: "Adornos decorativos",
     category: "Decoración",
     price: "Consultar",
     description: "Decoración impresa en 3D.",
     image: "",
-    colors: ["A elección"]
-  },
-  {
-    name: "❄️⛄ Muñeco de nieve tejido NAVIDAD ❄️",
+    colors: ["A elección"] },
+  {name: "❄️⛄ Muñeco de nieve tejido NAVIDAD ❄️",
     category: "Decoración",
     price: 3000,
     description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
@@ -33,24 +28,19 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
     image: "",
-    colors: []
-  },
-  {
-    name: "Organizadores",
+    colors: ["A elección"],
+  {name: "Organizadores",
     category: "Organización",
     price: "Consultar",
     description: "Organizadores personalizados.",
     image: "",
-    colors: ["A elección"]
-  },
-  {
-    name: "Productos a pedido",
+    colors: ["A elección"] },
+  {name: "Productos a pedido",
     category: "Personalizados",
     price: "Consultar",
     description: "Creamos tus ideas en 3D.",
     image: "",
-    colors: ["A elección"]
-  }
+    colors: ["A elección"]}
 ];
 
 const grid = document.getElementById("grid");
