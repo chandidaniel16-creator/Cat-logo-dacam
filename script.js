@@ -16,7 +16,7 @@ const products = [
     image: "",
     colors: ["Blanco", "Rojo", "Verde", "Dorado"]
   },
-  {name: "Muñeco de nieve tejido NAVIDAD",
+  {name: "❄️⛄ Muñeco de nieve tejido NAVIDAD ❄️",
    category: "Decoración",
     price: 3000,
     description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
@@ -31,7 +31,8 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 ❤️ Un toque navideño y original para cualquier rincón.
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
-    image: "",},
+    image: "",
+   colors: ["Blanco"],
   {
     name: "Organizadores",
     category: "Organización",
