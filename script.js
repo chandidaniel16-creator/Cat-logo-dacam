@@ -1,33 +1,27 @@
 const WHATSAPP_NUMBER = "5491151168759";
+
 const products = [
-  {name: "Llaveros personalizados",
+  {
+    name: "Llaveros personalizados",
     category: "Llaveros",
     price: "Consultar",
     description: "Diseños personalizados en 3D.",
     image: "",
-    colors: ["Negro", "Blanco", "Rojo", "Azul", "Rosa"] },
-  {name: "Adornos decorativos",
+    colors: ["Negro", "Blanco", "Rojo", "Azul", "Rosa"]
+  },
+  {
+    name: "Adornos decorativos",
     category: "Decoración",
     price: "Consultar",
     description: "Decoración impresa en 3D.",
     image: "",
-    colors: ["Blanco", "Rojo", "Verde", "Dorado"] },
-  {name: "Organizadores",
-    category: "Organización",
-    price: "Consultar",
-    description: "Organizadores personalizados.",
-    image: "",
-    colors: ["Negro", "Blanco", "Gris", "Rosa"] },
-  {name: "Productos a pedido",
-    category: "Personalizados",
-    price: "Consultar",
-    description: "Creamos tus ideas en 3D.",
-    image: "",
-    colors: ["A elección"],
-  {name: "Muñeco de nieve tejido",
-  category: "Decoración",
-  price: 3000,
-  description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
+    colors: ["Blanco", "Rojo", "Verde", "Dorado"]
+  },
+  {
+    name: "Muñeco de nieve tejido",
+    category: "Decoración",
+    price: 3000,
+    description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
 
 ¡Un detalle lleno de ternura para esta temporada! ❤️
 
@@ -39,9 +33,27 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 ❤️ Un toque navideño y original para cualquier rincón.
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
-  image: "",
-  colors: ["Blanco", "Rojo", "Verde"] }
+    image: "",
+    colors: ["Blanco", "Rojo", "Verde"]
+  },
+  {
+    name: "Organizadores",
+    category: "Organización",
+    price: "Consultar",
+    description: "Organizadores personalizados.",
+    image: "",
+    colors: ["Negro", "Blanco", "Gris", "Rosa"]
+  },
+  {
+    name: "Productos a pedido",
+    category: "Personalizados",
+    price: "Consultar",
+    description: "Creamos tus ideas en 3D.",
+    image: "",
+    colors: ["A elección"]
+  }
 ];
+
 
 const grid = document.getElementById("grid");
 const filters = document.getElementById("filters");
