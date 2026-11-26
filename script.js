@@ -1,9 +1,7 @@
 const WHATSAPP_NUMBER = "5491151168759";
 
 const products = [
-  {name:"Llaveros personalizados",category:"Llaveros",price:"Consultar",description:"Diseños personalizados en 3D.",image:""},
-  {
-{
+  {name:"Llaveros personalizados",category:"Llaveros",price:"Consultar",description:"Diseños personalizados en 3D.",image:""}
   name:"Muñeco de nieve tejido",
   category:"Decoración",
   price:"$3000",
@@ -23,7 +21,6 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 {name:"Figuras decorativas",category:"Decoración",price:"Consultar",description:"Figuras impresas en 3D.",image:""},
   {name:"Organizadores",category:"Organización",price:"Consultar",description:"Organizadores personalizados.",image:""},
   {name:"Productos a pedido",category:"Personalizados",price:"Consultar",description:"Creamos tus ideas en 3D.",image:""}
-];
 
 const grid = document.getElementById("grid");
 const filters = document.getElementById("filters");
