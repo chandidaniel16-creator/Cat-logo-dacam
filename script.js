@@ -68,6 +68,7 @@ function escapeHTML(value) {
 
 document.getElementById("topWhatsapp").href = wa();
 document.getElementById("bottomWhatsapp").href = wa();
+
 document.getElementById("year").textContent =
   new Date().getFullYear();
 
@@ -76,7 +77,7 @@ const style = document.createElement("style");
 style.textContent = `
 #product-detail {
   padding: 16px 0 35px;
-  scroll-margin-top: 20px;
+  scroll-margin-top: 80px;
 }
 
 .dc-back {
@@ -242,6 +243,7 @@ function draw() {
   grid.innerHTML = list.map(p => `
     <article class="card">
       <button
+        type="button"
         class="dc-open"
         data-product="${p.index}"
         style="border:0;background:transparent;text-align:left;width:100%;padding:0;color:inherit">
@@ -280,6 +282,21 @@ function draw() {
   });
 }
 
+function scrollToDetail() {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const position =
+        detail.getBoundingClientRect().top +
+        window.scrollY - 80;
+
+      window.scrollTo({
+        top: Math.max(0, position),
+        behavior: "smooth"
+      });
+    });
+  });
+}
+
 function openProduct(index, addHistory = true) {
   const p = products[index];
   if (!p) return;
@@ -306,10 +323,7 @@ function openProduct(index, addHistory = true) {
 
   showProduct(p);
 
-  detail.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+  scrollToDetail();
 }
 
 function showProduct(p) {
@@ -319,7 +333,7 @@ function showProduct(p) {
   detail.innerHTML = `
     <div class="dc-product">
 
-      <button class="dc-back" id="dc-back">
+      <button class="dc-back" id="dc-back" type="button">
         ← Volver al catálogo
       </button>
 
