@@ -3,6 +3,16 @@ const WHATSAPP_NUMBER = "5491151168759";
 const products = [
   {name:"Llaveros personalizados",category:"Llaveros",price:"Consultar",description:"Diseños personalizados en 3D.",image:""},
   {name:"Adornos decorativos",category:"Decoración",price:"Consultar",description:"Decoración impresa en 3D.",image:""},
+{name:"Muñeco de nieve tejito",category:"Decoración",price:"$3000",description:"☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
+
+¡Un detalle lleno de ternura para esta temporada! ❤️
+
+Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D, con detalles que imitan la textura del crochet.
+
+🧶 Diseño estilo tejido. ⛄ Terminaciones y detalles decorativos. 🎁 Ideal para decorar tu hogar o regalar. ❤️ Un toque navideño y original para cualquier rincón.
+
+✨ ¡Llevate el tuyo y llená de magia tu Navidad!.",image:""},
+{name:"Figuras decorativas",category:"Decoración",price:"Consultar",description:"Figuras impresas en 3D.",image:""},
   {name:"Organizadores",category:"Organización",price:"Consultar",description:"Organizadores personalizados.",image:""},
   {name:"Productos a pedido",category:"Personalizados",price:"Consultar",description:"Creamos tus ideas en 3D.",image:""}
 ];
