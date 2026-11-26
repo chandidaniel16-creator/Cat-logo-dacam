@@ -15,7 +15,7 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 ❤️ Un toque navideño y original para cualquier rincón.
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
-    image: "muneco-nieve.png",
+    image: "",
     colors: ["Blanco", "Rojo", "Verde"] },
   {name: "Llaveros personalizados",
     category: "Llaveros",
