@@ -1,8 +1,7 @@
 const WHATSAPP_NUMBER = "5491151168759";
 
 const products = [
-  
-{name: "Muñeco de nieve tejido",
+  {name: "Muñeco de nieve tejido",
   category: "Decoración",
   price: 3000, description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
 
@@ -16,7 +15,7 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 ❤️ Un toque navideño y original para cualquier rincón.
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
-  image: "",
+  image: "file_000000005918820e9d666860e5427824.png",
  {name: "Llaveros personalizados",
     category: "Llaveros",
     price: "Consultar",
