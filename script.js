@@ -1,18 +1,23 @@
 const WHATSAPP_NUMBER = "5491151168759";
 const products = [
-  {name: "Llaveros personalizados",
+  {
+    name: "Llaveros personalizados",
     category: "Llaveros",
     price: "Consultar",
     description: "Diseños personalizados en 3D.",
     image: "",
-    colors: ["A elección"]},
-  {name: "Adornos decorativos",
+    colors: ["A elección"]
+  },
+  {
+    name: "Adornos decorativos",
     category: "Decoración",
     price: "Consultar",
     description: "Decoración impresa en 3D.",
     image: "",
-    colors: ["A elección"]},
-  {name: "❄️⛄ Muñeco de nieve tejido NAVIDAD ❄️",
+    colors: ["A elección"]
+  },
+  {
+    name: "❄️⛄ Muñeco de nieve tejido NAVIDAD ❄️",
     category: "Decoración",
     price: 3000,
     description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
@@ -28,22 +33,25 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
     image: "",
-    colors: []},
-  {name: "Organizadores",
+    colors: []
+  },
+  {
+    name: "Organizadores",
     category: "Organización",
     price: "Consultar",
     description: "Organizadores personalizados.",
     image: "",
-    colors: ["A elección"]},
-  {name: "Productos a pedido",
+    colors: ["A elección"]
+  },
+  {
+    name: "Productos a pedido",
     category: "Personalizados",
     price: "Consultar",
     description: "Creamos tus ideas en 3D.",
     image: "",
-    colors: ["A elección"]}
+    colors: ["A elección"]
+  }
 ];
-
-
 
 const grid = document.getElementById("grid");
 const filters = document.getElementById("filters");
@@ -58,8 +66,8 @@ function wa(name = "", quantity = 1, color = "") {
   const msg =
     "Hola DaCam 3D! Quiero pedir:\n" +
     "Producto: " + name + "\n" +
-    "Cantidad: " + quantity + "\n" +
-    "Color: " + color;
+    "Cantidad: " + quantity +
+    (color ? "\nColor: " + color : "");
 
   return "https://wa.me/" + WHATSAPP_NUMBER +
     "?text=" + encodeURIComponent(msg);
@@ -322,7 +330,7 @@ function openProduct(index, addHistory = true) {
   if (!p) return;
 
   selectedQuantity = 1;
-  selectedColor = (p.colors || ["A elección"])[0];
+  selectedColor = p.colors.length > 0 ? p.colors[0] : "";
 
   if (addHistory) {
     history.pushState(
@@ -342,13 +350,14 @@ function openProduct(index, addHistory = true) {
   detail.hidden = false;
 
   showProduct(p);
-
   scrollToDetail();
 }
 
 function showProduct(p) {
-  const colors = p.colors || ["A elección"];
+  const colors = p.colors || [];
   const value = money(p.price);
+
+  selectedColor = colors.length > 0 ? colors[0] : "";
 
   detail.innerHTML = `
     <div class="dc-product">
@@ -379,17 +388,19 @@ function showProduct(p) {
         ${escapeHTML(p.description)}
       </p>
 
-      <div class="dc-field">
-        <label for="dc-color">Elegí el color:</label>
+      ${colors.length > 0 ? `
+        <div class="dc-field">
+          <label for="dc-color">Elegí el color:</label>
 
-        <select id="dc-color">
-          ${colors.map(c => `
-            <option value="${escapeHTML(c)}">
-              ${escapeHTML(c)}
-            </option>
-          `).join("")}
-        </select>
-      </div>
+          <select id="dc-color">
+            ${colors.map(c => `
+              <option value="${escapeHTML(c)}">
+                ${escapeHTML(c)}
+              </option>
+            `).join("")}
+          </select>
+        </div>
+      ` : ""}
 
       <div class="dc-field">
         <label>Cantidad:</label>
@@ -423,7 +434,9 @@ function showProduct(p) {
   const colorSelect = document.getElementById("dc-color");
 
   function updateOrder() {
-    selectedColor = colorSelect.value;
+    if (colorSelect) {
+      selectedColor = colorSelect.value;
+    }
 
     document.getElementById("dc-quantity").textContent =
       selectedQuantity;
@@ -438,7 +451,9 @@ function showProduct(p) {
       wa(p.name, selectedQuantity, selectedColor);
   }
 
-  colorSelect.onchange = updateOrder;
+  if (colorSelect) {
+    colorSelect.onchange = updateOrder;
+  }
 
   document.getElementById("dc-minus").onclick = () => {
     if (selectedQuantity > 1) {
@@ -485,3 +500,4 @@ window.addEventListener("hashchange", showFromAddress);
 
 drawFilters();
 showFromAddress();
+    
