@@ -24,11 +24,13 @@ const products = [
     price: "Consultar",
     description: "Creamos tus ideas en 3D.",
     image: "",
-    colors: ["A elección"] }];
+    colors: ["A elección"] }
+];
 
 const grid = document.getElementById("grid");
 const filters = document.getElementById("filters");
 const search = document.getElementById("search");
+const detail = document.getElementById("product-detail");
 
 let active = "Todos";
 let selectedQuantity = 1;
@@ -46,7 +48,10 @@ function wa(name = "", quantity = 1, color = "") {
 }
 
 function money(value) {
-  const number = Number(String(value).replace(/[^\d.,]/g, "").replace(",", "."));
+  const number = Number(
+    String(value).replace(/[^\d.,]/g, "").replace(",", ".")
+  );
+
   if (!Number.isFinite(number) || number <= 0) return null;
   return number;
 }
@@ -63,42 +68,143 @@ function escapeHTML(value) {
 
 document.getElementById("topWhatsapp").href = wa();
 document.getElementById("bottomWhatsapp").href = wa();
-document.getElementById("year").textContent = new Date().getFullYear();
-
-const detail = document.createElement("section");
-detail.id = "dc-detail";
-detail.hidden = true;
-grid.after(detail);
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 
 const style = document.createElement("style");
+
 style.textContent = `
-#dc-detail { padding: 16px 0 35px; }
-.dc-back { border:0; background:transparent; padding:12px 0; font-size:16px; cursor:pointer; }
-.dc-product { max-width:650px; margin:auto; }
-.dc-photo { width:100%; aspect-ratio:1/1; background:#f2f2f2; border-radius:16px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-.dc-photo img { width:100%; height:100%; object-fit:contain; }
-.dc-placeholder { color:#777; font-size:22px; }
-.dc-product h2 { margin:18px 0 8px; }
-.dc-price { font-size:25px; font-weight:700; margin:12px 0; }
-.dc-description { line-height:1.6; white-space:pre-line; }
-.dc-field { margin:20px 0; }
-.dc-field label { display:block; font-weight:600; margin-bottom:8px; }
-.dc-field select { width:100%; padding:12px; border:1px solid #ccc; border-radius:9px; font-size:16px; }
-.dc-quantity { display:flex; align-items:center; gap:18px; }
-.dc-quantity button { width:42px; height:42px; border:1px solid #ccc; border-radius:9px; background:white; font-size:22px; cursor:pointer; }
-.dc-order { display:block; text-align:center; padding:15px; margin-top:22px; background:#168b49; color:white; border-radius:10px; text-decoration:none; font-weight:700; }
-.dc-total { font-size:20px; font-weight:700; margin-top:15px; }
-.dc-open { cursor:pointer; }
-.dc-open:focus-visible { outline:3px solid #168b49; }
+#product-detail {
+  padding: 16px 0 35px;
+  scroll-margin-top: 20px;
+}
+
+.dc-back {
+  border: 0;
+  background: transparent;
+  padding: 12px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dc-product {
+  max-width: 650px;
+  margin: auto;
+}
+
+.dc-photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: #f2f2f2;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dc-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dc-placeholder {
+  color: #777;
+  font-size: 22px;
+}
+
+.dc-product h2 {
+  margin: 18px 0 8px;
+}
+
+.dc-price {
+  font-size: 25px;
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+.dc-description {
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.dc-field {
+  margin: 20px 0;
+}
+
+.dc-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.dc-field select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  font-size: 16px;
+}
+
+.dc-quantity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.dc-quantity button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  background: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.dc-order {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  margin-top: 22px;
+  background: #168b49;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.dc-total {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.dc-open {
+  cursor: pointer;
+}
+
+.dc-open:focus-visible {
+  outline: 3px solid #168b49;
+}
 `;
+
 document.head.appendChild(style);
 
 function drawFilters() {
-  const cats = ["Todos", ...new Set(products.map(p => p.category))];
+  const cats = [
+    "Todos",
+    ...new Set(products.map(p => p.category))
+  ];
 
-  filters.innerHTML = cats.map(c =>
-    `<button class="filter ${c === active ? "active" : ""}" data-c="${escapeHTML(c)}">${escapeHTML(c)}</button>`
-  ).join("");
+  filters.innerHTML = cats.map(c => `
+    <button
+      class="filter ${c === active ? "active" : ""}"
+      data-c="${escapeHTML(c)}">
+      ${escapeHTML(c)}
+    </button>
+  `).join("");
 
   filters.querySelectorAll("button").forEach(button => {
     button.onclick = () => {
@@ -114,6 +220,7 @@ function draw() {
   grid.hidden = false;
   filters.hidden = false;
   search.hidden = false;
+
   document.getElementById("count").hidden = false;
 
   const q = search.value.toLowerCase();
@@ -122,29 +229,44 @@ function draw() {
     .map((product, index) => ({ ...product, index }))
     .filter(p =>
       (active === "Todos" || p.category === active) &&
-      (p.name + p.category + p.description).toLowerCase().includes(q)
+      (p.name + p.category + p.description)
+        .toLowerCase().includes(q)
     );
 
   document.getElementById("count").textContent =
     list.length + " productos";
 
-  document.getElementById("empty").hidden = list.length > 0;
+  document.getElementById("empty").hidden =
+    list.length > 0;
 
   grid.innerHTML = list.map(p => `
     <article class="card">
-      <button class="dc-open" data-product="${p.index}"
+      <button
+        class="dc-open"
+        data-product="${p.index}"
         style="border:0;background:transparent;text-align:left;width:100%;padding:0;color:inherit">
+
         <div class="photo">
           ${p.image
             ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}">`
             : '<span class="placeholder">DaCam 3D</span>'}
         </div>
+
         <div class="info">
-          <span class="category">${escapeHTML(p.category)}</span>
+          <span class="category">
+            ${escapeHTML(p.category)}
+          </span>
+
           <h3>${escapeHTML(p.name)}</h3>
-          <p class="description">${escapeHTML(p.description)}</p>
+
+          <p class="description">
+            ${escapeHTML(p.description)}
+          </p>
+
           <div class="bottom">
-            <span class="price">${escapeHTML(p.price)}</span>
+            <span class="price">
+              ${escapeHTML(p.price)}
+            </span>
             <span class="ask">VER PRODUCTO →</span>
           </div>
         </div>
@@ -153,7 +275,8 @@ function draw() {
   `).join("");
 
   grid.querySelectorAll("[data-product]").forEach(button => {
-    button.onclick = () => openProduct(Number(button.dataset.product));
+    button.onclick = () =>
+      openProduct(Number(button.dataset.product));
   });
 }
 
@@ -165,18 +288,28 @@ function openProduct(index, addHistory = true) {
   selectedColor = (p.colors || ["A elección"])[0];
 
   if (addHistory) {
-    history.pushState({ product: index }, "", "#producto=" + index);
+    history.pushState(
+      { product: index },
+      "",
+      "#producto=" + index
+    );
   }
 
   grid.hidden = true;
   filters.hidden = true;
   search.hidden = true;
+
   document.getElementById("count").hidden = true;
   document.getElementById("empty").hidden = true;
+
   detail.hidden = false;
 
   showProduct(p);
-  window.scrollTo(0, 0);
+
+  detail.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
 
 function showProduct(p) {
@@ -185,7 +318,10 @@ function showProduct(p) {
 
   detail.innerHTML = `
     <div class="dc-product">
-      <button class="dc-back" id="dc-back">← Volver al catálogo</button>
+
+      <button class="dc-back" id="dc-back">
+        ← Volver al catálogo
+      </button>
 
       <div class="dc-photo">
         ${p.image
@@ -193,23 +329,35 @@ function showProduct(p) {
           : '<span class="dc-placeholder">DaCam 3D</span>'}
       </div>
 
-      <span class="category">${escapeHTML(p.category)}</span>
-      <h2>${escapeHTML(p.name)}</h2>
-      <div class="dc-price">${escapeHTML(p.price)}</div>
+      <span class="category">
+        ${escapeHTML(p.category)}
+      </span>
 
-      <p class="dc-description">${escapeHTML(p.description)}</p>
+      <h2>${escapeHTML(p.name)}</h2>
+
+      <div class="dc-price">
+        ${escapeHTML(p.price)}
+      </div>
+
+      <p class="dc-description">
+        ${escapeHTML(p.description)}
+      </p>
 
       <div class="dc-field">
         <label for="dc-color">Elegí el color:</label>
+
         <select id="dc-color">
-          ${colors.map(c =>
-            `<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`
-          ).join("")}
+          ${colors.map(c => `
+            <option value="${escapeHTML(c)}">
+              ${escapeHTML(c)}
+            </option>
+          `).join("")}
         </select>
       </div>
 
       <div class="dc-field">
         <label>Cantidad:</label>
+
         <div class="dc-quantity">
           <button id="dc-minus" type="button">−</button>
           <strong id="dc-quantity">1</strong>
@@ -218,13 +366,21 @@ function showProduct(p) {
       </div>
 
       <div class="dc-total" id="dc-total">
-        ${value ? "Total: $" + value.toLocaleString("es-AR") : "Precio a consultar"}
+        ${value
+          ? "Total: $" + value.toLocaleString("es-AR")
+          : "Precio a consultar"}
       </div>
 
-      <a class="dc-order" id="dc-order" target="_blank"
-        rel="noopener" href="${wa(p.name, 1, selectedColor)}">
+      <a
+        class="dc-order"
+        id="dc-order"
+        target="_blank"
+        rel="noopener"
+        href="${wa(p.name, 1, selectedColor)}">
+
         PEDIR POR WHATSAPP
       </a>
+
     </div>
   `;
 
@@ -238,7 +394,8 @@ function showProduct(p) {
 
     document.getElementById("dc-total").textContent =
       value
-        ? "Total: $" + (value * selectedQuantity).toLocaleString("es-AR")
+        ? "Total: $" +
+          (value * selectedQuantity).toLocaleString("es-AR")
         : "Precio a consultar";
 
     document.getElementById("dc-order").href =
@@ -259,7 +416,20 @@ function showProduct(p) {
     updateOrder();
   };
 
-  document.getElementById("dc-back").onclick = () => history.back();
+  document.getElementById("dc-back").onclick = () => {
+    history.replaceState(
+      null,
+      "",
+      location.pathname + location.search
+    );
+
+    draw();
+
+    document.getElementById("productos").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  };
 }
 
 function showFromAddress() {
@@ -273,8 +443,10 @@ function showFromAddress() {
 }
 
 search.addEventListener("input", draw);
+
 window.addEventListener("popstate", showFromAddress);
 window.addEventListener("hashchange", showFromAddress);
 
 drawFilters();
 showFromAddress();
+    
