@@ -6,15 +6,14 @@ const products = [
     price: "Consultar",
     description: "Diseños personalizados en 3D.",
     image: "",
-    colors: ["Negro", "Blanco", "Rojo", "Azul", "Rosa"]
-  },
+    colors: ["A elección"],
   {
     name: "Adornos decorativos",
     category: "Decoración",
     price: "Consultar",
     description: "Decoración impresa en 3D.",
     image: "",
-    colors: ["Blanco", "Rojo", "Verde", "Dorado"]
+    colors: ["A elección"]
   },
   {name: "❄️⛄ Muñeco de nieve tejido NAVIDAD ❄️",
    category: "Decoración",
@@ -32,14 +31,14 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
     image: "",
-   colors: ["Blanco"],
+   colors: ["A elección"],
   {
     name: "Organizadores",
     category: "Organización",
     price: "Consultar",
     description: "Organizadores personalizados.",
     image: "",
-    colors: ["Negro", "Blanco", "Gris", "Rosa"]
+    colors: ["A elección"]
   },
   {
     name: "Productos a pedido",
