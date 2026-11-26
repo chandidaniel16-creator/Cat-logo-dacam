@@ -27,8 +27,9 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 ❤️ Un toque navideño y original para cualquier rincón.
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
-    image: "",
-    colors: ["A elección"],
+        image: "",
+    colors: ["A elección"]
+  },
   {name: "Organizadores",
     category: "Organización",
     price: "Consultar",
