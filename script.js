@@ -1,8 +1,11 @@
+
 const WHATSAPP_NUMBER = "5491151168759";
+
 const products = [
   {name: "Muñeco de nieve tejido",
-  category: "Decoración",
-  price: 3000, description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
+    category: "Decoración",
+    price: 3000,
+    description: `☃️❄️ MUÑECO DE NIEVE TEJIDO ❄️
 
 ¡Un detalle lleno de ternura para esta temporada! ❤️
 
@@ -14,8 +17,9 @@ Muñeco de nieve con hermoso diseño de tejido, realizado mediante impresión 3D
 ❤️ Un toque navideño y original para cualquier rincón.
 
 ✨ ¡Llevate el tuyo y llená de magia tu Navidad!`,
-  image: "file_000000005918820e9d666860e5427824.png",
- {name: "Llaveros personalizados",
+    image: "muneco-nieve.png",
+    colors: ["Blanco", "Rojo", "Verde"] },
+  {name: "Llaveros personalizados",
     category: "Llaveros",
     price: "Consultar",
     description: "Diseños personalizados en 3D.",
@@ -281,7 +285,9 @@ function draw() {
 
           <div class="bottom">
             <span class="price">
-              ${escapeHTML(p.price)}
+              ${money(p.price)
+                ? "$" + money(p.price).toLocaleString("es-AR")
+                : escapeHTML(p.price)}
             </span>
             <span class="ask">VER PRODUCTO →</span>
           </div>
@@ -364,7 +370,9 @@ function showProduct(p) {
       <h2>${escapeHTML(p.name)}</h2>
 
       <div class="dc-price">
-        ${escapeHTML(p.price)}
+        ${value
+          ? "$" + value.toLocaleString("es-AR")
+          : escapeHTML(p.price)}
       </div>
 
       <p class="dc-description">
@@ -477,4 +485,3 @@ window.addEventListener("hashchange", showFromAddress);
 
 drawFilters();
 showFromAddress();
-    
