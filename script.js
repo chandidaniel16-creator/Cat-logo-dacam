@@ -1,40 +1,30 @@
-
 const WHATSAPP_NUMBER = "5491151168759";
 
 const products = [
-  {
-    name: "Llaveros personalizados",
+  {name: "Llaveros personalizados",
     category: "Llaveros",
     price: "Consultar",
     description: "Diseños personalizados en 3D.",
     image: "",
-    colors: ["Negro", "Blanco", "Rojo", "Azul", "Rosa"]
-  },
-  {
-    name: "Adornos decorativos",
+    colors: ["Negro", "Blanco", "Rojo", "Azul", "Rosa"] },
+  {name: "Adornos decorativos",
     category: "Decoración",
     price: "Consultar",
     description: "Decoración impresa en 3D.",
     image: "",
-    colors: ["Blanco", "Rojo", "Verde", "Dorado"]
-  },
-  {
-    name: "Organizadores",
+    colors: ["Blanco", "Rojo", "Verde", "Dorado"] },
+  {name: "Organizadores",
     category: "Organización",
     price: "Consultar",
     description: "Organizadores personalizados.",
     image: "",
-    colors: ["Negro", "Blanco", "Gris", "Rosa"]
-  },
-  {
-    name: "Productos a pedido",
+    colors: ["Negro", "Blanco", "Gris", "Rosa"] },
+  {name: "Productos a pedido",
     category: "Personalizados",
     price: "Consultar",
     description: "Creamos tus ideas en 3D.",
     image: "",
-    colors: ["A elección"]
-  }
-];
+    colors: ["A elección"] }];
 
 const grid = document.getElementById("grid");
 const filters = document.getElementById("filters");
