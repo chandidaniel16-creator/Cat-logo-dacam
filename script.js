@@ -6,6 +6,13 @@ const products = [
   {name:"Organizadores",category:"Organización",price:"Consultar",description:"Organizadores personalizados.",image:""},
   {name:"Productos a pedido",category:"Personalizados",price:"Consultar",description:"Creamos tus ideas en 3D.",image:""}
 ];
+{
+  name: "muñeco papá Noel tejido",
+  category: "Decoración",
+  price: "Consultar",
+  description: "Adornos impresos en 3D",
+  image: ""
+},
 
 const grid = document.getElementById("grid");
 const filters = document.getElementById("filters");
